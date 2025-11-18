@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Postman Collection
         run: |
-          newman run collections/my_api_collection.postman_collection.json \
+          newman run collections/main/17604848-08a6ecbd-2cc1-42b6-a387-4582297bb5f0.json \
             --environment collections/my_environment.postman_environment.json \
             --reporters cli,json \
             --reporter-json-export newman-report.json
