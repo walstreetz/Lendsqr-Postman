@@ -23,13 +23,13 @@ jobs:
         run: npm install -g newman
 
       # OPTIONAL: If you use an environment file, uncomment below:
-       - name: Install Newman HTML Reporter (optional)
-         run: npm install -g newman-reporter-htmlextra
+      # - name: Install Newman HTML Reporter (optional)
+       #  run: npm install -g newman-reporter-htmlextra
 
       - name: Run Postman Collection
         run: |
-          newman run github/workflows/17604848-08a6ecbd-2cc1-42b6-a387-4582297bb5f0.json \
-              --environment github/workflows/New Environment.postman_environment.json \
+            newman run collections/github/workflows/17604848-08a6ecbd-2cc1-42b6-a387-4582297bb5f0.json \
+              --environment collections/github/workflows/New Environment.postman_environment.json \
               --reporters cli,json \
               --reporter-json-export newman-report.json
 
