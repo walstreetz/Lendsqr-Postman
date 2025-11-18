@@ -29,7 +29,7 @@ jobs:
       - name: Run Postman Collection
         run: |
             newman run collections/github/workflows/17604848-08a6ecbd-2cc1-42b6-a387-4582297bb5f0.json \
-              --environment collections/github/workflows/New Environment.postman_environment.json \
+              --environment collections/github/workflows/New_Environment.postman_environment.json \
               --reporters cli,json \
               --reporter-json-export newman-report.json
 
