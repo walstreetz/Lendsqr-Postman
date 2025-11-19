@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Postman Collection
         run: |
-          newman run github/postman/collection/17604848-08a6ecbd-2cc1-42b6-a387-4582297bb5f0.json \
+          newman run github/postman/collections/17604848-08a6ecbd-2cc1-42b6-a387-4582297bb5f0.json \
             --reporters cli,json \
             --reporter-json-export newman-report.json
 
