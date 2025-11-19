@@ -28,8 +28,8 @@ jobs:
 
       - name: Run Postman Collection
         run: |
-            newman run /github/workflows/17604848-08a6ecbd-2cc1-42b6-a387-4582297bb5f0.json \
-              --environment /github/workflows/New_Environment.postman_environment.json \
+            newman run github/workflows/Lendsqr Assessment.postman_collection.json \
+              --environment github/workflows/New_Environment.postman_environment.json \
               --reporters cli,json \
               --reporter-json-export newman-report.json
 
