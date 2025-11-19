@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "08a6ecbd-2cc1-42b6-a387-4582297bb5f0",
+		"name": "Lendsqr Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17604848"
+	},
+	"item": [
+		{
+			"name": "Credit Bureaus Endpoints",
+			"item": [
+				{
+					"name": "Credit report CRC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Validate HTTP status code is in the successful range (2xx)\r",
+									"pm.test(\"Status code is successful (2xx)\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Validate response has a message field and it's not empty\r",
+									"pm.test(\"Response has a non-empty message field\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('message');\r",
+									"    pm.expect(jsonData.message).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"// Test 3: Validate the response time is less than 1sec\r",
+									"    pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}creditbureaus/crc/:bvn",
+							"host": [
+								"{{base_url}}creditbureaus"
+							],
+							"path": [
+								"crc",
+								":bvn"
+							],
+							"variable": [
+								{
+									"key": "bvn",
+									"value": "78935672130"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit report first",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Validate HTTP status code is in the successful range (2xx)",
+									"pm.test(\"Status code is successful (2xx)\", function () {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"// Test 2: Validate response has a message field and it's not empty",
+									"pm.test(\"Response has a non-empty message field\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData.message).to.not.be.empty;",
+									"});",
+									"",
+									"// Test 3: Validate the response time is less than 1 sec",
+									"    pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}creditbureaus/firstcentral/:bvn",
+							"host": [
+								"{{base_url}}creditbureaus"
+							],
+							"path": [
+								"firstcentral",
+								":bvn"
+							],
+							"variable": [
+								{
+									"key": "bvn",
+									"value": "78935672137"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Validation Endpoints",
+			"item": [
+				{
+					"name": "Verify Bank Acct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Validate HTTP status code is in the successful range (2xx)",
+									"pm.test(\"Status code is successful (2xx)\", function () {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"// Test 2: Validate response has a message field and it's not empty",
+									"pm.test(\"Response has a non-empty message field\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData.message).to.not.be.empty;",
+									"});",
+									"",
+									"// Test 3: Validate the response time is less than 1sec",
+									"    pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_number\": \"0768956758\",\r\n    \"bank_code\": \"071\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}verification/bankaccount/bvn",
+							"host": [
+								"{{base_url}}verification"
+							],
+							"path": [
+								"bankaccount",
+								"bvn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Initialize BVN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Validate HTTP status code is in the successful range (2xx)",
+									"pm.test(\"Status code is successful (2xx)\", function () {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"// Test 2: Validate response has a message field and it's not empty",
+									"pm.test(\"Response has a non-empty message field\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData.message).to.not.be.empty;",
+									"});",
+									"",
+									"// Test 3: Validate the response time is less than 1sec",
+									"    pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contact\": \"08012345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}verification/bvn/:bvn",
+							"host": [
+								"{{base_url}}verification"
+							],
+							"path": [
+								"bvn",
+								":bvn"
+							],
+							"variable": [
+								{
+									"key": "bvn",
+									"value": "22222222222"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Direct Debit Endpoints",
+			"item": [
+				{
+					"name": "All Banks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Validate HTTP status code is in the successful range (2xx)",
+									"pm.test(\"Status code is successful (2xx)\", function () {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"// Test 2: Validate response has a message field and it's not empty",
+									"pm.test(\"Response has a non-empty message field\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData.message).to.not.be.empty;",
+									"});",
+									"",
+									"// Test 3: Validate the response time is less than 1sec",
+									"    pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}direct-debit/banks?limit=100&page=1&sort_dir=ASC",
+							"host": [
+								"{{base_url}}direct-debit"
+							],
+							"path": [
+								"banks"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort_dir",
+									"value": "ASC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Txn",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Validate HTTP status code is in the successful range (2xx)",
+									"pm.test(\"Status code is successful (2xx)\", function () {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"// Test 2: Validate response has a message field and it's not empty",
+									"pm.test(\"Response has a non-empty message field\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData.message).to.not.be.empty;",
+									"});",
+									"",
+									"// Test 3: Validate the response time is less than 1sec",
+									"    pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}direct-debit/transactions?limit=10&page=1",
+							"host": [
+								"{{base_url}}direct-debit"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Decisioning Endpoints",
+			"item": [
+				{
+					"name": "Decision model details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Validate HTTP status code is in the successful range (2xx)",
+									"pm.test(\"Status code is successful (2xx)\", function () {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"// Test 2: Validate response has a message field and it's not empty",
+									"pm.test(\"Response has a non-empty message field\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData.message).to.not.be.empty;",
+									"});",
+									"",
+									"// Test 3: Validate the response time is less than 1sec",
+									"    pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}decisioning/models/:id/settings",
+							"host": [
+								"{{base_url}}decisioning"
+							],
+							"path": [
+								"models",
+								":id",
+								"settings"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Oraculi Borrower",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Validate HTTP status code is in the successful range (2xx)",
+									"pm.test(\"Status code is successful (2xx)\", function () {",
+									"    pm.expect(pm.response.code).to.be.within(200, 299);",
+									"});",
+									"",
+									"// Test 2: Validate response has a message field and it's not empty",
+									"pm.test(\"Response has a non-empty message field\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData.message).to.not.be.empty;",
+									"});",
+									"",
+									"// Test 3: Validate the response time is less than 1sec",
+									"    pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}decisioning/models/:2355",
+							"host": [
+								"{{base_url}}decisioning"
+							],
+							"path": [
+								"models",
+								":2355"
+							],
+							"variable": [
+								{
+									"key": "2355",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{API key}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		}
+	]
+}
